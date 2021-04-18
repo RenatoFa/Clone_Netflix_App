@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
   MaterialIcons,
   Entypo,
@@ -18,15 +18,15 @@ const firstSeason = movie.seasons.items[0];
 const firstEpisode = firstSeason.episodes.items[0];
 
 const MovieDetailsScreen = () => {
-  const seasonNames = movie.seasons.items.map((season) => season.name);
-  //const seasonNames = movie.seasons.items.map((season) => season.name);
+  const [currentSeason,setCurrentSeason] = useState(firstSeason)
+  const seasonNames = movie.seasons.items.map(season => season.name)
 
   return (
     <View>
       <Image source={{ uri: firstEpisode.poster }} style={styles.image} />
 
       <FlatList
-        data={firstSeason.episodes.items}
+        data={currentSeason.episodes.items}
         renderItem={({ item }) => <EpisodeItem episode={item} />}
         style={{ marginBottom: 250 }}
         ListHeaderComponent={
@@ -83,9 +83,17 @@ const MovieDetailsScreen = () => {
                 <Text style={{ color: "darkgrey", marginTop: 5 }}>Share</Text>
               </View>
             </View>
-            <Picker>
-              <Picker.Item label="Java" value="java" key="Java" />
-              <Picker.Item label="JavaScript" value="js" key="JavaScript" />
+            <Picker
+            style={{color:'white' , width:130}}
+            itemStyle={{color:'white',height:50}}
+            dropdownIconColor={'white'}
+            selectedValue={currentSeason.name}
+            onValueChange ={(itemValue,itemIndex) =>{
+              setCurrentSeason(movie.seasons.items[itemIndex])
+            }}>
+              {seasonNames.map(seasonName => (
+                <Picker.Item label={seasonName} value={seasonName} key={seasonName} />
+              ))}
             </Picker>
           </View>
         }
