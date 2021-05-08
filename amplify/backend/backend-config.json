@@ -1,12 +1,6 @@
 {
   "auth": {
-    "netflix65991db8": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false
-    },
-    "netflixc4f5d9f7": {
+    "netflix4fd7fb51": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -22,7 +16,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authnetflixc4f5d9f7"
+              "userPoolId": "authnetflix4fd7fb51"
             }
           },
           "additionalAuthenticationProviders": []
