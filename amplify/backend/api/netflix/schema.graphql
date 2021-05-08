@@ -1,11 +1,11 @@
-type Category @model {
+type Category @model  {
   id: ID!
   title: String!
 
   movies: [Movie] @connection(keyName:"byCategory",fields:["id"])
 }
 
-type Movie @model 
+type Movie @model  
 @key(name: "byCategory", fields:["categoryID"])
 {
   
@@ -23,7 +23,7 @@ type Movie @model
   seasons: [Season] @connection(keyName:"byMovie", fields:["id"])
 }
 
-type Season @model
+type Season @model 
 @key(name:"byMovie",fields:["movieID"])
 {
   id: ID!
@@ -34,7 +34,7 @@ type Season @model
   episodes: [Episode] @connection(keyName:"bySeason", fields: ["id"])
 }
 
-type Episode @model
+type Episode @model 
 @key(name:"bySeason",fields:["seasonID"])
 {
   id: ID!
